@@ -1,0 +1,1227 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"8 ./teclado.h
+[; ;./teclado.h: 8:     unsigned char tc_tecla(unsigned int timeout);
+[v _tc_tecla `(uc ~T0 @X0 0 ef1`ui ]
+"18 ./lcd.h
+[; ;./lcd.h: 18: void lcd_dat(unsigned char val);
+[v _lcd_dat `(v ~T0 @X0 0 ef1`uc ]
+"17
+[; ;./lcd.h: 17: void lcd_cmd(unsigned char val);
+[v _lcd_cmd `(v ~T0 @X0 0 ef1`uc ]
+"54 C:\Program Files\Microchip\xc8\v2.20\pic\include\c99\string.h
+[; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\c99\string.h: 54: size_t strlen (const char *);
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+"19 ./lcd.h
+[; ;./lcd.h: 19: void lcd_str(const char* str);
+[v _lcd_str `(v ~T0 @X0 0 ef1`*Cuc ]
+"4 ./delay.h
+[; ;./delay.h: 4: void atraso_ms(int t);
+[v _atraso_ms `(v ~T0 @X0 0 ef1`i ]
+[p mainexit ]
+"16 ./lcd.h
+[; ;./lcd.h: 16: void lcd_init(void);
+[v _lcd_init `(v ~T0 @X0 0 ef ]
+"24 ./ssd.h
+[; ;./ssd.h: 24:  void ssdInit(void);
+[v _ssdInit `(v ~T0 @X0 0 ef ]
+"26 ./pwm.h
+[; ;./pwm.h: 26:  void pwmInit(void);
+[v _pwmInit `(v ~T0 @X0 0 ef ]
+"22 ./ssd.h
+[; ;./ssd.h: 22:  void ssdDigit(char val, char pos);
+[v _ssdDigit `(v ~T0 @X0 0 ef2`uc`uc ]
+"23
+[; ;./ssd.h: 23:  void ssdUpdate(void);
+[v _ssdUpdate `(v ~T0 @X0 0 ef ]
+"23 ./pwm.h
+[; ;./pwm.h: 23:  void pwmSet1(unsigned char porcento);
+[v _pwmSet1 `(v ~T0 @X0 0 ef1`uc ]
+"38 ./config.h
+[p x MCLRE=ON ]
+"39
+[p x OSC=HS ]
+"40
+[p x WDT=OFF ]
+"41
+[p x LVP=OFF ]
+"42
+[p x DEBUG = OFF ]
+"43
+[p x WDTPS = 1 ]
+"18 main.c
+[; ;main.c: 18: int unsigned delay = 250;
+[v _delay `ui ~T0 @X0 1 e ]
+[i _delay
+-> -> 250 `i `ui
+]
+"19
+[; ;main.c: 19: unsigned int atrasoMin = 20;
+[v _atrasoMin `ui ~T0 @X0 1 e ]
+[i _atrasoMin
+-> -> 20 `i `ui
+]
+"20
+[; ;main.c: 20: unsigned int atrasoMed = 150;
+[v _atrasoMed `ui ~T0 @X0 1 e ]
+[i _atrasoMed
+-> -> 150 `i `ui
+]
+"21
+[; ;main.c: 21: unsigned int atrasoMax = 1000;
+[v _atrasoMax `ui ~T0 @X0 1 e ]
+[i _atrasoMax
+-> -> 1000 `i `ui
+]
+"24
+[; ;main.c: 24: int vetLed[7] = {0x80, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc, 0xfe};
+[v _vetLed `i ~T0 @X0 -> 7 `i e ]
+[i _vetLed
+:U ..
+-> 128 `i
+-> 192 `i
+-> 224 `i
+-> 240 `i
+-> 248 `i
+-> 252 `i
+-> 254 `i
+..
+]
+"27
+[; ;main.c: 27: int vetAnos[26] = {1922, 1929, 1930, 1932, 1934, 1937, 1939, 1940, 1945, 1953, 1954, 1960, 1964,
+[v _vetAnos `i ~T0 @X0 -> 26 `i e ]
+[i _vetAnos
+:U ..
+-> 1922 `i
+-> 1929 `i
+-> 1930 `i
+-> 1932 `i
+-> 1934 `i
+-> 1937 `i
+-> 1939 `i
+-> 1940 `i
+-> 1945 `i
+-> 1953 `i
+-> 1954 `i
+-> 1960 `i
+-> 1964 `i
+-> 1967 `i
+-> 1968 `i
+-> 1972 `i
+-> 1978 `i
+-> 1985 `i
+-> 1989 `i
+-> 1990 `i
+-> 2002 `i
+-> 2010 `i
+-> 2016 `i
+-> 2018 `i
+-> 2020 `i
+-> 2021 `i
+..
+]
+"31
+[; ;main.c: 31: int vetImpLeds[26] = {2, 6, 5, 5, 4, 5, 7, 6, 7, 3, 3, 6, 7, 3, 7, 2, 6, 7, 3, 6, 2, 2, 6, 1, 7, 7};
+[v _vetImpLeds `i ~T0 @X0 -> 26 `i e ]
+[i _vetImpLeds
+:U ..
+-> 2 `i
+-> 6 `i
+-> 5 `i
+-> 5 `i
+-> 4 `i
+-> 5 `i
+-> 7 `i
+-> 6 `i
+-> 7 `i
+-> 3 `i
+-> 3 `i
+-> 6 `i
+-> 7 `i
+-> 3 `i
+-> 7 `i
+-> 2 `i
+-> 6 `i
+-> 7 `i
+-> 3 `i
+-> 6 `i
+-> 2 `i
+-> 2 `i
+-> 6 `i
+-> 1 `i
+-> 7 `i
+-> 7 `i
+..
+]
+"33
+[; ;main.c: 33: int teclado() {
+[v _teclado `(i ~T0 @X0 1 ef ]
+{
+[e :U _teclado ]
+[f ]
+"35
+[; ;main.c: 35:     unsigned int sequenciaTeclado[4];
+[v _sequenciaTeclado `ui ~T0 @X0 -> 4 `i a ]
+"36
+[; ;main.c: 36:     unsigned int a, b, c, d, ano1;
+[v _a `ui ~T0 @X0 1 a ]
+[v _b `ui ~T0 @X0 1 a ]
+[v _c `ui ~T0 @X0 1 a ]
+[v _d `ui ~T0 @X0 1 a ]
+[v _ano1 `ui ~T0 @X0 1 a ]
+"37
+[; ;main.c: 37:     unsigned int i, j;
+[v _i `ui ~T0 @X0 1 a ]
+[v _j `ui ~T0 @X0 1 a ]
+"38
+[; ;main.c: 38:     unsigned int tecla;
+[v _tecla `ui ~T0 @X0 1 a ]
+"57
+[; ;main.c: 57:     for(int i = 0; i < 4; i++){
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 4 `i 3  ]
+[e $U 4  ]
+[e :U 3 ]
+{
+"59
+[; ;main.c: 59:         (*(volatile __near unsigned char*)0xF95) = 0x0F;
+[e = *U -> -> 3989 `i `*VNuc -> -> 15 `i `uc ]
+"60
+[; ;main.c: 60:         tecla = tc_tecla(0) + 0x30;
+[e = _tecla -> + -> ( _tc_tecla (1 -> -> 0 `i `ui `i -> 48 `i `ui ]
+"63
+[; ;main.c: 63:         (*(volatile __near unsigned char*)0xF95) = 0x00;
+[e = *U -> -> 3989 `i `*VNuc -> -> 0 `i `uc ]
+"64
+[; ;main.c: 64:         lcd_dat(tecla);
+[e ( _lcd_dat (1 -> _tecla `uc ]
+"67
+[; ;main.c: 67:         sequenciaTeclado[i] = tecla - 0x30;
+[e = *U + &U _sequenciaTeclado * -> -> _i `ui `ux -> -> # *U &U _sequenciaTeclado `ui `ux - _tecla -> -> 48 `i `ui ]
+"68
+[; ;main.c: 68:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 3  ]
+[e :U 4 ]
+}
+"70
+[; ;main.c: 70:     a = sequenciaTeclado[0] * 1000;
+[e = _a * *U + &U _sequenciaTeclado * -> -> -> 0 `i `ui `ux -> -> # *U &U _sequenciaTeclado `ui `ux -> -> 1000 `i `ui ]
+"71
+[; ;main.c: 71:     b = sequenciaTeclado[1] * 100;
+[e = _b * *U + &U _sequenciaTeclado * -> -> -> 1 `i `ui `ux -> -> # *U &U _sequenciaTeclado `ui `ux -> -> 100 `i `ui ]
+"72
+[; ;main.c: 72:     c = sequenciaTeclado[2] * 10;
+[e = _c * *U + &U _sequenciaTeclado * -> -> -> 2 `i `ui `ux -> -> # *U &U _sequenciaTeclado `ui `ux -> -> 10 `i `ui ]
+"73
+[; ;main.c: 73:     d = sequenciaTeclado[3];
+[e = _d *U + &U _sequenciaTeclado * -> -> -> 3 `i `ui `ux -> -> # *U &U _sequenciaTeclado `ui `ux ]
+"74
+[; ;main.c: 74:     ano1 = a + b + c + d;
+[e = _ano1 + + + _a _b _c _d ]
+"75
+[; ;main.c: 75:     return ano1;
+[e ) -> _ano1 `i ]
+[e $UE 2  ]
+"78
+[; ;main.c: 78: }
+[e :UE 2 ]
+}
+"80
+[; ;main.c: 80: int verificaAno(int ano) {
+[v _verificaAno `(i ~T0 @X0 1 ef1`i ]
+{
+[e :U _verificaAno ]
+[v _ano `i ~T0 @X0 1 r1 ]
+[f ]
+"81
+[; ;main.c: 81:     int ano2 = ano;
+[v _ano2 `i ~T0 @X0 1 a ]
+[e = _ano2 _ano ]
+"82
+[; ;main.c: 82:     for (int i = 0; i < 26; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 26 `i 7  ]
+[e $U 8  ]
+[e :U 7 ]
+{
+"83
+[; ;main.c: 83:         for (int j = 0; j < 26; j++) {
+{
+[v _j `i ~T0 @X0 1 a ]
+[e = _j -> 0 `i ]
+[e $ < _j -> 26 `i 10  ]
+[e $U 11  ]
+[e :U 10 ]
+{
+"84
+[; ;main.c: 84:             if (ano == vetAnos[j]) {
+[e $ ! == _ano *U + &U _vetAnos * -> -> _j `ui `ux -> -> # *U &U _vetAnos `ui `ux 13  ]
+{
+"85
+[; ;main.c: 85:                 return ano;
+[e ) _ano ]
+[e $UE 6  ]
+"86
+[; ;main.c: 86:             } else if (ano2 == vetAnos[j]) {
+}
+[e $U 14  ]
+[e :U 13 ]
+[e $ ! == _ano2 *U + &U _vetAnos * -> -> _j `ui `ux -> -> # *U &U _vetAnos `ui `ux 15  ]
+{
+"87
+[; ;main.c: 87:                 return ano2;
+[e ) _ano2 ]
+[e $UE 6  ]
+"88
+[; ;main.c: 88:             }
+}
+[e :U 15 ]
+[e :U 14 ]
+"89
+[; ;main.c: 89:         }
+}
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 26 `i 10  ]
+[e :U 11 ]
+}
+"90
+[; ;main.c: 90:         ano++;
+[e ++ _ano -> 1 `i ]
+"91
+[; ;main.c: 91:         ano2--;
+[e -- _ano2 -> 1 `i ]
+"92
+[; ;main.c: 92:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 26 `i 7  ]
+[e :U 8 ]
+}
+"93
+[; ;main.c: 93: }
+[e :UE 6 ]
+}
+"95
+[; ;main.c: 95: void acendeLed(int ano) {
+[v _acendeLed `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _acendeLed ]
+[v _ano `i ~T0 @X0 1 r1 ]
+[f ]
+"96
+[; ;main.c: 96:     (*(volatile __near unsigned char*)0xF93) = 0x00;
+[e = *U -> -> 3987 `i `*VNuc -> -> 0 `i `uc ]
+"97
+[; ;main.c: 97:     (*(volatile __near unsigned char*)0xF81) = 0x00;
+[e = *U -> -> 3969 `i `*VNuc -> -> 0 `i `uc ]
+"98
+[; ;main.c: 98:     int a = verificaAno(ano);
+[v _a `i ~T0 @X0 1 a ]
+[e = _a ( _verificaAno (1 _ano ]
+"99
+[; ;main.c: 99:     int i, j;
+[v _i `i ~T0 @X0 1 a ]
+[v _j `i ~T0 @X0 1 a ]
+"100
+[; ;main.c: 100:     for (i = 0; i < 26; i++) {
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 26 `i 17  ]
+[e $U 18  ]
+[e :U 17 ]
+{
+"101
+[; ;main.c: 101:         if (vetAnos[i] == a) {
+[e $ ! == *U + &U _vetAnos * -> -> _i `ui `ux -> -> # *U &U _vetAnos `ui `ux _a 20  ]
+{
+"102
+[; ;main.c: 102:             (*(volatile __near unsigned char*)0xF81) = vetLed[vetImpLeds[i] - 1];
+[e = *U -> -> 3969 `i `*VNuc -> *U + &U _vetLed * -> -> - *U + &U _vetImpLeds * -> -> _i `ui `ux -> -> # *U &U _vetImpLeds `ui `ux -> 1 `i `ui `ux -> -> # *U &U _vetLed `ui `ux `uc ]
+"103
+[; ;main.c: 103:         }
+}
+[e :U 20 ]
+"104
+[; ;main.c: 104:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 26 `i 17  ]
+[e :U 18 ]
+}
+"105
+[; ;main.c: 105: }
+[e :UE 16 ]
+}
+"107
+[; ;main.c: 107: void limpaTela() {
+[v _limpaTela `(v ~T0 @X0 1 ef ]
+{
+[e :U _limpaTela ]
+[f ]
+"108
+[; ;main.c: 108:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"109
+[; ;main.c: 109:     lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"110
+[; ;main.c: 110:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"111
+[; ;main.c: 111:     lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"112
+[; ;main.c: 112:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"113
+[; ;main.c: 113:     lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"114
+[; ;main.c: 114:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"115
+[; ;main.c: 115:     lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"116
+[; ;main.c: 116: }
+[e :UE 21 ]
+}
+"118
+[; ;main.c: 118: void fatos(char str[64]) {
+[v _fatos `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _fatos ]
+[v _str `*uc ~T0 @X0 1 r1 ]
+[f ]
+"119
+[; ;main.c: 119:     int i;
+[v _i `i ~T0 @X0 1 a ]
+"120
+[; ;main.c: 120:     char str1[17];
+[v _str1 `uc ~T0 @X0 -> 17 `i a ]
+"121
+[; ;main.c: 121:     char str2[17];
+[v _str2 `uc ~T0 @X0 -> 17 `i a ]
+"122
+[; ;main.c: 122:     char str3[17];
+[v _str3 `uc ~T0 @X0 -> 17 `i a ]
+"123
+[; ;main.c: 123:     char str4[17];
+[v _str4 `uc ~T0 @X0 -> 17 `i a ]
+"124
+[; ;main.c: 124:     str1[16] = '\0';
+[e = *U + &U _str1 * -> -> -> 16 `i `ui `ux -> -> # *U &U _str1 `ui `ux -> -> 0 `ui `uc ]
+"125
+[; ;main.c: 125:     str2[16] = '\0';
+[e = *U + &U _str2 * -> -> -> 16 `i `ui `ux -> -> # *U &U _str2 `ui `ux -> -> 0 `ui `uc ]
+"126
+[; ;main.c: 126:     str3[16] = '\0';
+[e = *U + &U _str3 * -> -> -> 16 `i `ui `ux -> -> # *U &U _str3 `ui `ux -> -> 0 `ui `uc ]
+"127
+[; ;main.c: 127:     str4[16] = '\0';
+[e = *U + &U _str4 * -> -> -> 16 `i `ui `ux -> -> # *U &U _str4 `ui `ux -> -> 0 `ui `uc ]
+"129
+[; ;main.c: 129:     limpaTela();
+[e ( _limpaTela ..  ]
+"130
+[; ;main.c: 130:     if (strlen(str) > 16) {
+[e $ ! > ( _strlen (1 -> _str `*Cuc -> -> 16 `i `ui 23  ]
+{
+"131
+[; ;main.c: 131:         for (i = 0; i < strlen(str); i++) {
+{
+[e = _i -> 0 `i ]
+[e $U 27  ]
+[e :U 24 ]
+{
+"132
+[; ;main.c: 132:             if (str[i] == '\0') {
+[e $ ! == -> *U + _str * -> _i `x -> -> # *U _str `i `x `ui -> 0 `ui 28  ]
+{
+"133
+[; ;main.c: 133:                 i = strlen(str);
+[e = _i -> ( _strlen (1 -> _str `*Cuc `i ]
+"134
+[; ;main.c: 134:             } else if (i < 16) {
+}
+[e $U 29  ]
+[e :U 28 ]
+[e $ ! < _i -> 16 `i 30  ]
+{
+"135
+[; ;main.c: 135:                 str1[i] = str[i];
+[e = *U + &U _str1 * -> -> _i `ui `ux -> -> # *U &U _str1 `ui `ux *U + _str * -> _i `x -> -> # *U _str `i `x ]
+"136
+[; ;main.c: 136:             } else if (i < 32) {
+}
+[e $U 31  ]
+[e :U 30 ]
+[e $ ! < _i -> 32 `i 32  ]
+{
+"137
+[; ;main.c: 137:                 str2[i - 16] = str[i];
+[e = *U + &U _str2 * -> -> - _i -> 16 `i `ui `ux -> -> # *U &U _str2 `ui `ux *U + _str * -> _i `x -> -> # *U _str `i `x ]
+"138
+[; ;main.c: 138:             } else if (i < 48) {
+}
+[e $U 33  ]
+[e :U 32 ]
+[e $ ! < _i -> 48 `i 34  ]
+{
+"139
+[; ;main.c: 139:                 str3[i - 32] = str[i];
+[e = *U + &U _str3 * -> -> - _i -> 32 `i `ui `ux -> -> # *U &U _str3 `ui `ux *U + _str * -> _i `x -> -> # *U _str `i `x ]
+"140
+[; ;main.c: 140:             } else if (i < 64) {
+}
+[e $U 35  ]
+[e :U 34 ]
+[e $ ! < _i -> 64 `i 36  ]
+{
+"141
+[; ;main.c: 141:                 str4[i - 48] = str[i];
+[e = *U + &U _str4 * -> -> - _i -> 48 `i `ui `ux -> -> # *U &U _str4 `ui `ux *U + _str * -> _i `x -> -> # *U _str `i `x ]
+"142
+[; ;main.c: 142:             }
+}
+[e :U 36 ]
+[e :U 35 ]
+[e :U 33 ]
+[e :U 31 ]
+[e :U 29 ]
+"143
+[; ;main.c: 143:         }
+}
+[e ++ _i -> 1 `i ]
+[e :U 27 ]
+[e $ < -> _i `ui ( _strlen (1 -> _str `*Cuc 24  ]
+[e :U 25 ]
+}
+"144
+[; ;main.c: 144:         lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"145
+[; ;main.c: 145:         lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"146
+[; ;main.c: 146:         lcd_str(str1);
+[e ( _lcd_str (1 -> &U _str1 `*Cuc ]
+"147
+[; ;main.c: 147:         lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"148
+[; ;main.c: 148:         lcd_str(str2);
+[e ( _lcd_str (1 -> &U _str2 `*Cuc ]
+"149
+[; ;main.c: 149:         lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"150
+[; ;main.c: 150:         lcd_str(str3);
+[e ( _lcd_str (1 -> &U _str3 `*Cuc ]
+"151
+[; ;main.c: 151:         lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"152
+[; ;main.c: 152:         lcd_str(str4);
+[e ( _lcd_str (1 -> &U _str4 `*Cuc ]
+"153
+[; ;main.c: 153:     }
+}
+[e :U 23 ]
+"154
+[; ;main.c: 154: }
+[e :UE 22 ]
+}
+"156
+[; ;main.c: 156: void bancoDados(int ano) {
+[v _bancoDados `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _bancoDados ]
+[v _ano `i ~T0 @X0 1 r1 ]
+[f ]
+"157
+[; ;main.c: 157:     int a = verificaAno(ano);
+[v _a `i ~T0 @X0 1 a ]
+[e = _a ( _verificaAno (1 _ano ]
+"158
+[; ;main.c: 158:     fatos("                                                                                                  ");
+[e ( _fatos (1 :s 1C ]
+"159
+[; ;main.c: 159:     switch (a) {
+[e $U 39  ]
+{
+"160
+[; ;main.c: 160:         case 1922:
+[e :U 40 ]
+"161
+[; ;main.c: 161:             fatos("Fundacao do partido comunista do brasil");
+[e ( _fatos (1 :s 2C ]
+"162
+[; ;main.c: 162:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"163
+[; ;main.c: 163:             break;
+[e $U 38  ]
+"164
+[; ;main.c: 164:         case 1929:
+[e :U 41 ]
+"165
+[; ;main.c: 165:             fatos("Quebra da bolsa de valores de NY");
+[e ( _fatos (1 :s 3C ]
+"166
+[; ;main.c: 166:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"167
+[; ;main.c: 167:             break;
+[e $U 38  ]
+"168
+[; ;main.c: 168:         case 1930:
+[e :U 42 ]
+"169
+[; ;main.c: 169:             fatos("Inicio da Era Vargas");
+[e ( _fatos (1 :s 4C ]
+"170
+[; ;main.c: 170:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"171
+[; ;main.c: 171:             break;
+[e $U 38  ]
+"172
+[; ;main.c: 172:         case 1932:
+[e :U 43 ]
+"173
+[; ;main.c: 173:             fatos("Revolucao constitucionalista em Sao Paulo");
+[e ( _fatos (1 :s 5C ]
+"174
+[; ;main.c: 174:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"175
+[; ;main.c: 175:             break;
+[e $U 38  ]
+"176
+[; ;main.c: 176:         case 1934:
+[e :U 44 ]
+"177
+[; ;main.c: 177:             fatos("Promulgada a    Constituicao de 1934");
+[e ( _fatos (1 :s 6C ]
+"178
+[; ;main.c: 178:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"179
+[; ;main.c: 179:             break;
+[e $U 38  ]
+"180
+[; ;main.c: 180:         case 1937:
+[e :U 45 ]
+"181
+[; ;main.c: 181:             fatos("Implantacao do Estado Novo");
+[e ( _fatos (1 :s 7C ]
+"182
+[; ;main.c: 182:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"183
+[; ;main.c: 183:             break;
+[e $U 38  ]
+"184
+[; ;main.c: 184:         case 1939:
+[e :U 46 ]
+"185
+[; ;main.c: 185:             fatos("Inicio da segunda guerra mundial");
+[e ( _fatos (1 :s 8C ]
+"186
+[; ;main.c: 186:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"187
+[; ;main.c: 187:             break;
+[e $U 38  ]
+"188
+[; ;main.c: 188:         case 1940:
+[e :U 47 ]
+"189
+[; ;main.c: 189:             fatos("Instituicao do salario minimo");
+[e ( _fatos (1 :s 9C ]
+"190
+[; ;main.c: 190:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"191
+[; ;main.c: 191:             break;
+[e $U 38  ]
+"192
+[; ;main.c: 192:         case 1945:
+[e :U 48 ]
+"193
+[; ;main.c: 193:             fatos("Fundacao da ONU  ");
+[e ( _fatos (1 :s 10C ]
+"194
+[; ;main.c: 194:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"195
+[; ;main.c: 195:             fatos("Fim da Era      Vargas");
+[e ( _fatos (1 :s 11C ]
+"196
+[; ;main.c: 196:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"197
+[; ;main.c: 197:             fatos("Fim da segunda  guerra");
+[e ( _fatos (1 :s 12C ]
+"198
+[; ;main.c: 198:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"199
+[; ;main.c: 199:             fatos("Redemocratizacaodo Brasil");
+[e ( _fatos (1 :s 13C ]
+"200
+[; ;main.c: 200:             break;
+[e $U 38  ]
+"201
+[; ;main.c: 201:         case 1953:
+[e :U 49 ]
+"202
+[; ;main.c: 202:             fatos("Criacao da Petrobras");
+[e ( _fatos (1 :s 14C ]
+"203
+[; ;main.c: 203:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"204
+[; ;main.c: 204:             break;
+[e $U 38  ]
+"205
+[; ;main.c: 205:         case 1954:
+[e :U 50 ]
+"206
+[; ;main.c: 206:             fatos("Suicido de Getulio Vargas");
+[e ( _fatos (1 :s 15C ]
+"207
+[; ;main.c: 207:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"208
+[; ;main.c: 208:             break;
+[e $U 38  ]
+"209
+[; ;main.c: 209:         case 1960:
+[e :U 51 ]
+"210
+[; ;main.c: 210:             fatos("Brasilia inaugurada por Juscelino Kubitscheck");
+[e ( _fatos (1 :s 16C ]
+"211
+[; ;main.c: 211:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"212
+[; ;main.c: 212:             break;
+[e $U 38  ]
+"213
+[; ;main.c: 213:         case 1964:
+[e :U 52 ]
+"214
+[; ;main.c: 214:             fatos("Inicio ditaduta militar no brasil");
+[e ( _fatos (1 :s 17C ]
+"215
+[; ;main.c: 215:             atraso_ms(atrasoMed);
+[e ( _atraso_ms (1 -> _atrasoMed `i ]
+"216
+[; ;main.c: 216:             fatos("Centenas de denuncias de casos de tortura");
+[e ( _fatos (1 :s 18C ]
+"217
+[; ;main.c: 217:             break;
+[e $U 38  ]
+"218
+[; ;main.c: 218:         case 1967:
+[e :U 53 ]
+"219
+[; ;main.c: 219:             fatos("Constituicao da ditatura militar");
+[e ( _fatos (1 :s 19C ]
+"220
+[; ;main.c: 220:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"221
+[; ;main.c: 221:             break;
+[e $U 38  ]
+"222
+[; ;main.c: 222:         case 1968:
+[e :U 54 ]
+"223
+[; ;main.c: 223:             fatos("Implantacao do AI-5");
+[e ( _fatos (1 :s 20C ]
+"224
+[; ;main.c: 224:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"225
+[; ;main.c: 225:             break;
+[e $U 38  ]
+"226
+[; ;main.c: 226:         case 1972:
+[e :U 55 ]
+"227
+[; ;main.c: 227:             fatos("Milagre enconomico, crescimento em 11,2 por cento");
+[e ( _fatos (1 :s 21C ]
+"228
+[; ;main.c: 228:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"229
+[; ;main.c: 229:             break;
+[e $U 38  ]
+"230
+[; ;main.c: 230:         case 1978:
+[e :U 56 ]
+"231
+[; ;main.c: 231:             fatos("Revogacao do AI-5 e de outros atos da ditadura");
+[e ( _fatos (1 :s 22C ]
+"232
+[; ;main.c: 232:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"233
+[; ;main.c: 233:             break;
+[e $U 38  ]
+"234
+[; ;main.c: 234:         case 1985:
+[e :U 57 ]
+"235
+[; ;main.c: 235:             fatos("Fim da ditadura militar");
+[e ( _fatos (1 :s 23C ]
+"236
+[; ;main.c: 236:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"237
+[; ;main.c: 237:             break;
+[e $U 38  ]
+"238
+[; ;main.c: 238:         case 1989:
+[e :U 58 ]
+"239
+[; ;main.c: 239:             fatos("Collor eleito presidente");
+[e ( _fatos (1 :s 24C ]
+"240
+[; ;main.c: 240:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"241
+[; ;main.c: 241:             break;
+[e $U 38  ]
+"242
+[; ;main.c: 242:         case 1990:
+[e :U 59 ]
+"243
+[; ;main.c: 243:             fatos("Congelamento de contas por Collor");
+[e ( _fatos (1 :s 25C ]
+"244
+[; ;main.c: 244:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"245
+[; ;main.c: 245:             break;
+[e $U 38  ]
+"247
+[; ;main.c: 247:         case 2002:
+[e :U 60 ]
+"248
+[; ;main.c: 248:             fatos("Brasil ganha a copa do mundo");
+[e ( _fatos (1 :s 26C ]
+"249
+[; ;main.c: 249:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"250
+[; ;main.c: 250:             fatos("Lula é eleito presidente da República");
+[e ( _fatos (1 :s 27C ]
+"251
+[; ;main.c: 251:             break;
+[e $U 38  ]
+"253
+[; ;main.c: 253:         case 2010:
+[e :U 61 ]
+"254
+[; ;main.c: 254:             fatos("Eleicao de Dilma Rousseff");
+[e ( _fatos (1 :s 28C ]
+"255
+[; ;main.c: 255:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"256
+[; ;main.c: 256:             break;
+[e $U 38  ]
+"258
+[; ;main.c: 258:         case 2016:
+[e :U 62 ]
+"259
+[; ;main.c: 259:             fatos("Impeachment de Dilma Rousseff");
+[e ( _fatos (1 :s 29C ]
+"260
+[; ;main.c: 260:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"261
+[; ;main.c: 261:             break;
+[e $U 38  ]
+"263
+[; ;main.c: 263:         case 2018:
+[e :U 63 ]
+"264
+[; ;main.c: 264:             fatos("Eleicao de Jair Bolsonaro");
+[e ( _fatos (1 :s 30C ]
+"265
+[; ;main.c: 265:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"266
+[; ;main.c: 266:             break;
+[e $U 38  ]
+"267
+[; ;main.c: 267:         case 2020:
+[e :U 64 ]
+"268
+[; ;main.c: 268:             fatos("Casos de        intoxicacao pelacerveja Backer");
+[e ( _fatos (1 :s 31C ]
+"269
+[; ;main.c: 269:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"270
+[; ;main.c: 270:             fatos("Instabilidade nogoverno, saude  e educacao     ");
+[e ( _fatos (1 :s 32C ]
+"271
+[; ;main.c: 271:             atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"272
+[; ;main.c: 272:             fatos("Casos de corona virus no Brasil com mais de     500000 mortes");
+[e ( _fatos (1 :s 33C ]
+"273
+[; ;main.c: 273:             break;
+[e $U 38  ]
+"274
+[; ;main.c: 274:         case 2021:
+[e :U 65 ]
+"275
+[; ;main.c: 275:             fatos("Lancamento do   primeiro satelite totalmente    brasileiro");
+[e ( _fatos (1 :s 34C ]
+"276
+[; ;main.c: 276:             atraso_ms(atrasoMax * 3);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 3 `i `ui `i ]
+"277
+[; ;main.c: 277:             fatos("Crise sanitaria e governamental                           ");
+[e ( _fatos (1 :s 35C ]
+"278
+[; ;main.c: 278:             atraso_ms(atrasoMax * 2);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 2 `i `ui `i ]
+"279
+[; ;main.c: 279:             fatos("inicio da       vacinacao no    Brasil                     ");
+[e ( _fatos (1 :s 36C ]
+"280
+[; ;main.c: 280:             atraso_ms(atrasoMax * 2);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 2 `i `ui `i ]
+"281
+[; ;main.c: 281:             fatos("Chacina em      favela no RJ                               ");
+[e ( _fatos (1 :s 37C ]
+"282
+[; ;main.c: 282:             atraso_ms(atrasoMax * 2);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 2 `i `ui `i ]
+"283
+[; ;main.c: 283:             fatos("Serial killer   procurado       durante 20 dias foi morto ");
+[e ( _fatos (1 :s 38C ]
+"284
+[; ;main.c: 284:             atraso_ms(atrasoMax * 3);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 3 `i `ui `i ]
+"285
+[; ;main.c: 285:             break;
+[e $U 38  ]
+"286
+[; ;main.c: 286:     }
+}
+[e $U 38  ]
+[e :U 39 ]
+[e [\ _a , $ -> 1922 `i 40
+ , $ -> 1929 `i 41
+ , $ -> 1930 `i 42
+ , $ -> 1932 `i 43
+ , $ -> 1934 `i 44
+ , $ -> 1937 `i 45
+ , $ -> 1939 `i 46
+ , $ -> 1940 `i 47
+ , $ -> 1945 `i 48
+ , $ -> 1953 `i 49
+ , $ -> 1954 `i 50
+ , $ -> 1960 `i 51
+ , $ -> 1964 `i 52
+ , $ -> 1967 `i 53
+ , $ -> 1968 `i 54
+ , $ -> 1972 `i 55
+ , $ -> 1978 `i 56
+ , $ -> 1985 `i 57
+ , $ -> 1989 `i 58
+ , $ -> 1990 `i 59
+ , $ -> 2002 `i 60
+ , $ -> 2010 `i 61
+ , $ -> 2016 `i 62
+ , $ -> 2018 `i 63
+ , $ -> 2020 `i 64
+ , $ -> 2021 `i 65
+ 38 ]
+[e :U 38 ]
+"287
+[; ;main.c: 287: }
+[e :UE 37 ]
+}
+"289
+[; ;main.c: 289: void init() {
+[v _init `(v ~T0 @X0 1 ef ]
+{
+[e :U _init ]
+[f ]
+"290
+[; ;main.c: 290:     lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"291
+[; ;main.c: 291:     lcd_str("      Bem");
+[e ( _lcd_str (1 :s 39C ]
+"292
+[; ;main.c: 292:     lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"293
+[; ;main.c: 293:     lcd_str("     Vindo");
+[e ( _lcd_str (1 :s 40C ]
+"294
+[; ;main.c: 294:     atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"296
+[; ;main.c: 296:     fatos("Esta e a linha  do tempo dos    ultimos 100 anosdo Brasil");
+[e ( _fatos (1 :s 41C ]
+"297
+[; ;main.c: 297:     atraso_ms(atrasoMax * 2);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 2 `i `ui `i ]
+"299
+[; ;main.c: 299:     lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"300
+[; ;main.c: 300:     lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"301
+[; ;main.c: 301:     lcd_str("Insira o Ano:");
+[e ( _lcd_str (1 :s 42C ]
+"302
+[; ;main.c: 302:     lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"305
+[; ;main.c: 305: }
+[e :UE 66 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"307
+[; ;main.c: 307: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"308
+[; ;main.c: 308:     int i;
+[v _i `i ~T0 @X0 1 a ]
+"309
+[; ;main.c: 309:     int cooler;
+[v _cooler `i ~T0 @X0 1 a ]
+"311
+[; ;main.c: 311:     (*(volatile __near unsigned char*)0xFC1) = 0x06;
+[e = *U -> -> 4033 `i `*VNuc -> -> 6 `i `uc ]
+"312
+[; ;main.c: 312:     (*(volatile __near unsigned char*)0xF93) = 0x01;
+[e = *U -> -> 3987 `i `*VNuc -> -> 1 `i `uc ]
+"313
+[; ;main.c: 313:     (*(volatile __near unsigned char*)0xF94) = 0x00;
+[e = *U -> -> 3988 `i `*VNuc -> -> 0 `i `uc ]
+"314
+[; ;main.c: 314:     (*(volatile __near unsigned char*)0xF95) = 0x00;
+[e = *U -> -> 3989 `i `*VNuc -> -> 0 `i `uc ]
+"315
+[; ;main.c: 315:     (*(volatile __near unsigned char*)0xF96) = 0x00;
+[e = *U -> -> 3990 `i `*VNuc -> -> 0 `i `uc ]
+"316
+[; ;main.c: 316:     (*(volatile __near unsigned char*)0xF93) = 0xF8;
+[e = *U -> -> 3987 `i `*VNuc -> -> 248 `i `uc ]
+"318
+[; ;main.c: 318:     lcd_init();
+[e ( _lcd_init ..  ]
+"319
+[; ;main.c: 319:     init();
+[e ( _init ..  ]
+"320
+[; ;main.c: 320:     ssdInit();
+[e ( _ssdInit ..  ]
+"321
+[; ;main.c: 321:     pwmInit();
+[e ( _pwmInit ..  ]
+"322
+[; ;main.c: 322:     atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"323
+[; ;main.c: 323:     int ano = teclado();
+[v _ano `i ~T0 @X0 1 a ]
+[e = _ano ( _teclado ..  ]
+"324
+[; ;main.c: 324:     ano = 2023;
+[e = _ano -> 2023 `i ]
+"325
+[; ;main.c: 325:     int a = verificaAno(ano);
+[v _a `i ~T0 @X0 1 a ]
+[e = _a ( _verificaAno (1 _ano ]
+"326
+[; ;main.c: 326:     for (i = 0; i < 1000; i++) {
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 1000 `i 68  ]
+[e $U 69  ]
+[e :U 68 ]
+{
+"327
+[; ;main.c: 327:         ssdDigit((a / 1000) % 10, 0);
+[e ( _ssdDigit (2 , -> % / _a -> 1000 `i -> 10 `i `uc -> -> 0 `i `uc ]
+"328
+[; ;main.c: 328:         ssdDigit((a / 100) % 10, 1);
+[e ( _ssdDigit (2 , -> % / _a -> 100 `i -> 10 `i `uc -> -> 1 `i `uc ]
+"329
+[; ;main.c: 329:         ssdDigit((a / 10) % 10, 2);
+[e ( _ssdDigit (2 , -> % / _a -> 10 `i -> 10 `i `uc -> -> 2 `i `uc ]
+"330
+[; ;main.c: 330:         ssdDigit((a /1 )% 10, 3);
+[e ( _ssdDigit (2 , -> % / _a -> 1 `i -> 10 `i `uc -> -> 3 `i `uc ]
+"331
+[; ;main.c: 331:         ssdUpdate();
+[e ( _ssdUpdate ..  ]
+"332
+[; ;main.c: 332:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 1000 `i 68  ]
+[e :U 69 ]
+}
+"333
+[; ;main.c: 333:     cooler = 95;
+[e = _cooler -> 95 `i ]
+"334
+[; ;main.c: 334:     while(cooler == 95){
+[e $U 71  ]
+[e :U 72 ]
+{
+"335
+[; ;main.c: 335:         pwmSet1(cooler);
+[e ( _pwmSet1 (1 -> _cooler `uc ]
+"336
+[; ;main.c: 336:         lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"337
+[; ;main.c: 337:         lcd_cmd(0x01);
+[e ( _lcd_cmd (1 -> -> 1 `i `uc ]
+"338
+[; ;main.c: 338:         lcd_cmd(0xC0);
+[e ( _lcd_cmd (1 -> -> 192 `i `uc ]
+"339
+[; ;main.c: 339:         lcd_str("     Fatos");
+[e ( _lcd_str (1 :s 43C ]
+"340
+[; ;main.c: 340:         lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"341
+[; ;main.c: 341:         lcd_str("   Ocorridos ");
+[e ( _lcd_str (1 :s 44C ]
+"342
+[; ;main.c: 342:         atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"343
+[; ;main.c: 343:         bancoDados(ano);
+[e ( _bancoDados (1 _ano ]
+"344
+[; ;main.c: 344:         atraso_ms(atrasoMax);
+[e ( _atraso_ms (1 -> _atrasoMax `i ]
+"345
+[; ;main.c: 345:         fatos("Verifique a     importancia do  ano nos LEDs                ");
+[e ( _fatos (1 :s 45C ]
+"346
+[; ;main.c: 346:         acendeLed(ano);
+[e ( _acendeLed (1 _ano ]
+"347
+[; ;main.c: 347:         atraso_ms(atrasoMax * 2);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 2 `i `ui `i ]
+"348
+[; ;main.c: 348:         limpaTela();
+[e ( _limpaTela ..  ]
+"349
+[; ;main.c: 349:         lcd_cmd(0x80);
+[e ( _lcd_cmd (1 -> -> 128 `i `uc ]
+"350
+[; ;main.c: 350:         lcd_str("      Fim");
+[e ( _lcd_str (1 :s 46C ]
+"351
+[; ;main.c: 351:         cooler = 0;
+[e = _cooler -> 0 `i ]
+"352
+[; ;main.c: 352:         pwmSet1(cooler);
+[e ( _pwmSet1 (1 -> _cooler `uc ]
+"353
+[; ;main.c: 353:         lcd_cmd(0x90);
+[e ( _lcd_cmd (1 -> -> 144 `i `uc ]
+"354
+[; ;main.c: 354:         lcd_str("Desenvolvido Por");
+[e ( _lcd_str (1 :s 47C ]
+"355
+[; ;main.c: 355:         lcd_cmd(0xD0);
+[e ( _lcd_cmd (1 -> -> 208 `i `uc ]
+"356
+[; ;main.c: 356:         lcd_str("Mariana Tonini");
+[e ( _lcd_str (1 :s 48C ]
+"357
+[; ;main.c: 357:         atraso_ms(atrasoMax * 5);
+[e ( _atraso_ms (1 -> * _atrasoMax -> -> 5 `i `ui `i ]
+"358
+[; ;main.c: 358:     }
+}
+[e :U 71 ]
+"334
+[; ;main.c: 334:     while(cooler == 95){
+[e $ == _cooler -> 95 `i 72  ]
+[e :U 73 ]
+"360
+[; ;main.c: 360: }
+[e :UE 67 ]
+}
+[a 43C 32 32 32 32 32 70 97 116 111 115 0 ]
+[a 33C 67 97 115 111 115 32 100 101 32 99 111 114 111 110 97 32 118 105 114 117 115 32 110 111 32 66 114 97 115 105 108 32 99 111 109 32 109 97 105 115 32 100 101 32 32 32 32 32 53 48 48 48 48 48 32 109 111 114 116 101 115 0 ]
+[a 14C 67 114 105 97 99 97 111 32 100 97 32 80 101 116 114 111 98 114 97 115 0 ]
+[a 15C 83 117 105 99 105 100 111 32 100 101 32 71 101 116 117 108 105 111 32 86 97 114 103 97 115 0 ]
+[a 4C 73 110 105 99 105 111 32 100 97 32 69 114 97 32 86 97 114 103 97 115 0 ]
+[a 11C 70 105 109 32 100 97 32 69 114 97 32 32 32 32 32 32 86 97 114 103 97 115 0 ]
+[a 25C 67 111 110 103 101 108 97 109 101 110 116 111 32 100 101 32 99 111 110 116 97 115 32 112 111 114 32 67 111 108 108 111 114 0 ]
+[a 47C 68 101 115 101 110 118 111 108 118 105 100 111 32 80 111 114 0 ]
+[a 31C 67 97 115 111 115 32 100 101 32 32 32 32 32 32 32 32 105 110 116 111 120 105 99 97 99 97 111 32 112 101 108 97 99 101 114 118 101 106 97 32 66 97 99 107 101 114 0 ]
+[a 19C 67 111 110 115 116 105 116 117 105 99 97 111 32 100 97 32 100 105 116 97 116 117 114 97 32 109 105 108 105 116 97 114 0 ]
+[a 23C 70 105 109 32 100 97 32 100 105 116 97 100 117 114 97 32 109 105 108 105 116 97 114 0 ]
+[a 7C 73 109 112 108 97 110 116 97 99 97 111 32 100 111 32 69 115 116 97 100 111 32 78 111 118 111 0 ]
+[a 21C 77 105 108 97 103 114 101 32 101 110 99 111 110 111 109 105 99 111 44 32 99 114 101 115 99 105 109 101 110 116 111 32 101 109 32 49 49 44 50 32 112 111 114 32 99 101 110 116 111 0 ]
+[a 34C 76 97 110 99 97 109 101 110 116 111 32 100 111 32 32 32 112 114 105 109 101 105 114 111 32 115 97 116 101 108 105 116 101 32 116 111 116 97 108 109 101 110 116 101 32 32 32 32 98 114 97 115 105 108 101 105 114 111 0 ]
+[a 30C 69 108 101 105 99 97 111 32 100 101 32 74 97 105 114 32 66 111 108 115 111 110 97 114 111 0 ]
+[a 9C 73 110 115 116 105 116 117 105 99 97 111 32 100 111 32 115 97 108 97 114 105 111 32 109 105 110 105 109 111 0 ]
+[a 5C 82 101 118 111 108 117 99 97 111 32 99 111 110 115 116 105 116 117 99 105 111 110 97 108 105 115 116 97 32 101 109 32 83 97 111 32 80 97 117 108 111 0 ]
+[a 26C 66 114 97 115 105 108 32 103 97 110 104 97 32 97 32 99 111 112 97 32 100 111 32 109 117 110 100 111 0 ]
+[a 40C 32 32 32 32 32 86 105 110 100 111 0 ]
+[a 46C 32 32 32 32 32 32 70 105 109 0 ]
+[a 39C 32 32 32 32 32 32 66 101 109 0 ]
+[a 17C 73 110 105 99 105 111 32 100 105 116 97 100 117 116 97 32 109 105 108 105 116 97 114 32 110 111 32 98 114 97 115 105 108 0 ]
+[a 2C 70 117 110 100 97 99 97 111 32 100 111 32 112 97 114 116 105 100 111 32 99 111 109 117 110 105 115 116 97 32 100 111 32 98 114 97 115 105 108 0 ]
+[a 41C 69 115 116 97 32 101 32 97 32 108 105 110 104 97 32 32 100 111 32 116 101 109 112 111 32 100 111 115 32 32 32 32 117 108 116 105 109 111 115 32 49 48 48 32 97 110 111 115 100 111 32 66 114 97 115 105 108 0 ]
+[a 13C 82 101 100 101 109 111 99 114 97 116 105 122 97 99 97 111 100 111 32 66 114 97 115 105 108 0 ]
+[a 8C 73 110 105 99 105 111 32 100 97 32 115 101 103 117 110 100 97 32 103 117 101 114 114 97 32 109 117 110 100 105 97 108 0 ]
+[a 16C 66 114 97 115 105 108 105 97 32 105 110 97 117 103 117 114 97 100 97 32 112 111 114 32 74 117 115 99 101 108 105 110 111 32 75 117 98 105 116 115 99 104 101 99 107 0 ]
+[a 48C 77 97 114 105 97 110 97 32 84 111 110 105 110 105 0 ]
+[a 29C 73 109 112 101 97 99 104 109 101 110 116 32 100 101 32 68 105 108 109 97 32 82 111 117 115 115 101 102 102 0 ]
+[a 28C 69 108 101 105 99 97 111 32 100 101 32 68 105 108 109 97 32 82 111 117 115 115 101 102 102 0 ]
+[a 24C 67 111 108 108 111 114 32 101 108 101 105 116 111 32 112 114 101 115 105 100 101 110 116 101 0 ]
+[a 18C 67 101 110 116 101 110 97 115 32 100 101 32 100 101 110 117 110 99 105 97 115 32 100 101 32 99 97 115 111 115 32 100 101 32 116 111 114 116 117 114 97 0 ]
+[a 22C 82 101 118 111 103 97 99 97 111 32 100 111 32 65 73 45 53 32 101 32 100 101 32 111 117 116 114 111 115 32 97 116 111 115 32 100 97 32 100 105 116 97 100 117 114 97 0 ]
+[a 12C 70 105 109 32 100 97 32 115 101 103 117 110 100 97 32 32 103 117 101 114 114 97 0 ]
+[a 27C 76 117 108 97 32 18446744073709551593 32 101 108 101 105 116 111 32 112 114 101 115 105 100 101 110 116 101 32 100 97 32 82 101 112 18446744073709551610 98 108 105 99 97 0 ]
+[a 3C 81 117 101 98 114 97 32 100 97 32 98 111 108 115 97 32 100 101 32 118 97 108 111 114 101 115 32 100 101 32 78 89 0 ]
+[a 42C 73 110 115 105 114 97 32 111 32 65 110 111 58 0 ]
+[a 20C 73 109 112 108 97 110 116 97 99 97 111 32 100 111 32 65 73 45 53 0 ]
+[a 6C 80 114 111 109 117 108 103 97 100 97 32 97 32 32 32 32 67 111 110 115 116 105 116 117 105 99 97 111 32 100 101 32 49 57 51 52 0 ]
+[a 44C 32 32 32 79 99 111 114 114 105 100 111 115 32 0 ]
+[a 38C 83 101 114 105 97 108 32 107 105 108 108 101 114 32 32 32 112 114 111 99 117 114 97 100 111 32 32 32 32 32 32 32 100 117 114 97 110 116 101 32 50 48 32 100 105 97 115 32 102 111 105 32 109 111 114 116 111 32 0 ]
+[a 10C 70 117 110 100 97 99 97 111 32 100 97 32 79 78 85 32 32 0 ]
+[a 32C 73 110 115 116 97 98 105 108 105 100 97 100 101 32 110 111 103 111 118 101 114 110 111 44 32 115 97 117 100 101 32 32 101 32 101 100 117 99 97 99 97 111 32 32 32 32 32 0 ]
+[a 45C 86 101 114 105 102 105 113 117 101 32 97 32 32 32 32 32 105 109 112 111 114 116 97 110 99 105 97 32 100 111 32 32 97 110 111 32 110 111 115 32 76 69 68 115 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 36C 105 110 105 99 105 111 32 100 97 32 32 32 32 32 32 32 118 97 99 105 110 97 99 97 111 32 110 111 32 32 32 32 66 114 97 115 105 108 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 35C 67 114 105 115 101 32 115 97 110 105 116 97 114 105 97 32 101 32 103 111 118 101 114 110 97 109 101 110 116 97 108 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 37C 67 104 97 99 105 110 97 32 101 109 32 32 32 32 32 32 102 97 118 101 108 97 32 110 111 32 82 74 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 1C 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
